@@ -127,7 +127,7 @@ class ReactSnapScroll extends React.Component {
                 console.log('>> state updated', this.state.index)
 
                 this.unlock();
-                this.props.indexChanged(index);
+                this.props.indexChanged(newIndex);
             })
         }
     }
