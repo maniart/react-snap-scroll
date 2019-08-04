@@ -111,8 +111,8 @@ class ReactSnapScroll extends React.Component {
         console.log('--- updated index from prop: ', this.props.index)
         console.log('--- inddex on start: ', this.state.index)
         console.log('--- children: ', this.props.children)
-        const { index: newIndex, childen } = this.props
-        if (children || !childen.length || newIndex > children.length - 1 || newIndex < 0) { 
+        const { index: newIndex, children } = this.props
+        if (children || !children.length || newIndex > children.length - 1 || newIndex < 0) { 
             return
         }
         const { index: oldIndex } = this.state
