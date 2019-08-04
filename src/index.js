@@ -122,6 +122,9 @@ class ReactSnapScroll extends React.Component {
             this.setState({
                 index: newIndex,
                 direction
+            }, () => {
+                this.unlock();
+                this.props.indexChanged(index);
             })
         }
     }
