@@ -118,11 +118,14 @@ class ReactSnapScroll extends React.Component {
         const { index: oldIndex } = this.state
         let direction = DIRECTION.FORWARD
         if (newIndex < oldIndex) { direction = DIRECTION.REVERSE }
-        if (this.props.index !== this.state.index) {
+        if (newIndex !== oldIndex) {
+            console.log('>> here we go')
             this.setState({
                 index: newIndex,
                 direction
             }, () => {
+                console.log('>> state updated', this.state.index)
+
                 this.unlock();
                 this.props.indexChanged(index);
             })
