@@ -109,9 +109,10 @@ class ReactSnapScroll extends React.Component {
     componentDidUpdate() {
         // index & direction should change
         console.log('--- updated index from prop: ', this.props.index)
-        console.log('--- inddex on starte: ', this.state.index)
+        console.log('--- inddex on start: ', this.state.index)
+        console.log('--- children: ', this.props.children)
         const { index: newIndex, childen } = this.props
-        if (!childen.length || newIndex > children.length - 1 || newIndex < 0) { 
+        if (children || !childen.length || newIndex > children.length - 1 || newIndex < 0) { 
             return
         }
         const { index: oldIndex } = this.state
