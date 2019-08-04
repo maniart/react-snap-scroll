@@ -26,7 +26,7 @@ const TRANSITIONS = [
 const TRANSITION_SETTINGS = {
     'move-top-bottom':         { DURATION: { ENTER: 1000, EXIT: 1000 }},
     'move-top-bottom-stagger': { DURATION: { ENTER: 750,  EXIT: 1000 }},
-    'scale-down-top-bottom':   { DURATION: { ENTER: 1000, EXIT: 1000 }},
+    'scale-down-top-bo  ttom':   { DURATION: { ENTER: 1000, EXIT: 1000 }},
     'scale-down-up':           { DURATION: { ENTER: 1000, EXIT: 500  }},
     'fold-top-bottom':         { DURATION: { ENTER: 1000, EXIT: 1000 }},
     'cube-top-bottom':         { DURATION: { ENTER: 1000, EXIT: 1000 }},
@@ -58,11 +58,13 @@ class ReactSnapScroll extends React.Component {
             orientation: PropTypes.oneOf(['vertical', 'horizontal']),
             customTransition: PropTypes.string,
             customDuration: PropTypes.object,
+            index: PropTypes.number
         }
     }
 
     static get defaultProps() {
         return {
+            index: 0,
             start: 0,
             indexChanged: f => f,
             transition: TRANSITIONS[0],
@@ -102,6 +104,25 @@ class ReactSnapScroll extends React.Component {
         // Fire initial indexChanged();
         this.props.indexChanged(this.state.index);
 
+    }
+
+    componentDidUpdate() {
+        // index & direction should change
+        console.log('--- updated index from prop: ', this.props.index)
+        console.log('--- inddex on starte: ', this.state.index)
+        const { index: newIndex, childen } = this.props
+        if (!child.length || newIndex > child.length - 1 || newIndex < 0) { 
+            return
+        }
+        const { index: oldIndex } = this.state
+        let direction = DIRECTION.FORWARD
+        if (newIndex < oldIndex) { direction = DIRECTION.REVERSE }
+        if (this.props.index !== this.state.index) {
+            this.setState({
+                index: newIndex,
+                direction
+            })
+        }
     }
 
     componentWillUnmount() {
