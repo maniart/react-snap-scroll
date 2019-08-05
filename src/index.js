@@ -150,9 +150,11 @@ class ReactSnapScroll extends React.Component {
 
             switch (true) {
                 case (delta > SETTINGS.WHEEL_THRESHOLD):
+                    console.log('NEXT')
                     this.next();
                     break;
                 case (delta < -SETTINGS.WHEEL_THRESHOLD):
+                    console.log('PREV')
                     this.prev();
                     break;
                 default:
