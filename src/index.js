@@ -158,6 +158,8 @@ class ReactSnapScroll extends React.Component {
                     this.prev();
                     break;
                 default:
+                    console.log('UNLOCK')
+
                     this.unlock(0);
             }
 
