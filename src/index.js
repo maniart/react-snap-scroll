@@ -107,29 +107,24 @@ class ReactSnapScroll extends React.Component {
     }
 
     componentDidUpdate() {
-        // index & direction should change
-        console.log('--- updated index from prop: ', this.props.index)
-        console.log('--- inddex on start: ', this.state.index)
-        console.log('--- children: ', this.props.children)
-        const { index: newIndex, children } = this.props
-        if (!children || !children.length || newIndex > children.length - 1 || newIndex < 0) { 
-            return
-        }
-        const { index: oldIndex } = this.state
-        let direction = DIRECTION.FORWARD
-        if (newIndex < oldIndex) { direction = DIRECTION.REVERSE }
-        if (newIndex !== oldIndex) {
-            console.log('>> here we go')
-            this.setState({
-                index: newIndex,
-                direction
-            }, () => {
-                console.log('>> state updated', this.state.index)
+        // // index & direction should change
+        // const { index: newIndex, children } = this.props
+        // if (!children || !children.length || newIndex > children.length - 1 || newIndex < 0) { 
+        //     return
+        // }
+        // const { index: oldIndex } = this.state
+        // let direction = DIRECTION.FORWARD
+        // if (newIndex < oldIndex) { direction = DIRECTION.REVERSE }
+        // if (newIndex !== oldIndex) {
+        //     this.setState({
+        //         index: newIndex,
+        //         direction
+        //     }, () => {
 
-                this.unlock();
-                this.props.indexChanged(newIndex);
-            })
-        }
+        //         this.unlock();
+        //         this.props.indexChanged(newIndex);
+        //     })
+        // }
     }
 
     componentWillUnmount() {
