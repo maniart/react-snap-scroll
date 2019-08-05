@@ -124,6 +124,7 @@ class ReactSnapScroll extends React.Component {
                 direction
             }
         }
+        return null
     }
 
     componentWillUnmount() {
