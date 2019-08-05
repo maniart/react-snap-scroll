@@ -106,13 +106,13 @@ class ReactSnapScroll extends React.Component {
 
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         // index & direction should change
         const { index: newIndex, children } = this.props
+        const { index: oldIndex } = prevProps
         if (!children || !children.length || newIndex > children.length - 1 || newIndex < 0) { 
             return
         }
-        const { index: oldIndex } = this.state
         let direction = DIRECTION.FORWARD
         if (newIndex < oldIndex) { direction = DIRECTION.REVERSE }
         if (newIndex !== oldIndex) {
@@ -122,7 +122,6 @@ class ReactSnapScroll extends React.Component {
                 index: newIndex,
                 direction
             }, () => {
-
                 this.unlock();
                 this.props.indexChanged(newIndex);
             })
